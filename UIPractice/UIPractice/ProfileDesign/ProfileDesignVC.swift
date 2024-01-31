@@ -19,6 +19,7 @@ class ProfileDesignVC: UIViewController {
     
     
     var collectionList = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6"), UIImage(named: "7")]
+    
     private lazy var profileView: UIView = {
         let profileView = UIView()
         profileView.backgroundColor = .clear
@@ -216,7 +217,7 @@ class ProfileDesignVC: UIViewController {
         }
         collectionView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(348)
-            make.leading.bottom.trailing.equalTo(profileView.safeAreaLayoutGuide)
+            make.leading.bottom.trailing.equalToSuperview()
         }
         photoView.snp.makeConstraints { make in
             make.width.height.equalTo(88)
@@ -317,7 +318,7 @@ extension ProfileDesignVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.height / 3)
+        return CGSize(width: collectionView.frame.width / 3 - 1.5, height: collectionView.frame.height / 3)
     }
     
 }
