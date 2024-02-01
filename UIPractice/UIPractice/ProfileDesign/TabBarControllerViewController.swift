@@ -25,7 +25,12 @@ class TabBarControllerViewController: UITabBarController {
     
     private func setTabBar() {
         self.viewControllers = [firstVC, secondVC]
-        firstVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: ""), tag: 0)
+        firstVC.tabBarItem = UITabBarItem(title: "<", image: UIImage(named: ""), tag: 0)
         secondVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Me"), tag: 1)
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 60) // 폰트와 크기를 설정합니다.
+        ]
+        firstVC.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
     }
 }

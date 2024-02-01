@@ -16,8 +16,6 @@ class MyVC: UIViewController {
     
     var userinfo: [String] = ["Name", "Age"]
     
-    
-    
     private lazy var myTableView: UITableView = {
         let myTableView = UITableView()
         myTableView.backgroundColor = .white
@@ -46,8 +44,6 @@ class MyVC: UIViewController {
 }
 extension MyVC: UITableViewDataSource, UITableViewDelegate {
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userinfo.count
     }
@@ -55,10 +51,9 @@ extension MyVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = myTableView.dequeueReusableCell(withIdentifier: MyCell.identi, for: indexPath) as? MyCell else { return UITableViewCell()}
         cell.setLabel(model: userinfo[indexPath.row])
-        cell.layoutMargins.bottom = 10
+        cell.selectionStyle = .none
         return cell
-    }
-    
+    }    
 }
 
 extension MyVC {

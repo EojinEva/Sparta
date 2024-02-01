@@ -13,26 +13,15 @@ class MyCell: UITableViewCell {
     
     private lazy var myLabel: UILabel = {
         let myLabel = UILabel()
-        myLabel.backgroundColor = .systemFill
         return myLabel
     }()
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 16.0, left: 16, bottom: 16, right: 16))
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(myLabel)
-        layer.cornerRadius = 5
-        layer.masksToBounds = true
-        layer.borderWidth = 0.5
         
         prepareForReuse()
         myPageAutoLayout()
-        layoutSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -50,13 +39,18 @@ class MyCell: UITableViewCell {
         myLabel.sizeToFit()
         myLabel.textAlignment = .center
         myLabel.font = UIFont.systemFont(ofSize: 25)
+
     }
     
     func myPageAutoLayout(){ //오토레이아웃
         myLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(15)
+            make.bottom.equalToSuperview().offset(-10)
+            make.trailing.equalToSuperview().offset(-15)
         }
-    }
+        }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
